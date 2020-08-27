@@ -1,0 +1,27 @@
+{
+  "name": "chatt",
+  "version": "1.0.0",
+  "description": "the projekt is about making chat with romm and nick name and password ",
+  "main": "logic.js",
+  "scripts": {
+    "test": "Abdullah and nawar",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abbe91/chatt.git"
+  },
+  "keywords": [
+    "chatt"
+  ],
+  "author": "Abdullah And Nawar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abbe91/chatt/issues"
+  },
+  "homepage": "https://github.com/Abbe91/chatt#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^2.3.0"
+  }
+}

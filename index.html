@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Socket.IO chat</title>
+        <link rel="stylesheet" href="./style.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script defer src="./logic.js"></script>
+      </head>
+
+      <body>
+
+        
+        <div class="join ui">
+          <button onclick="deletTheRooms()">Delet all the rooms</button>
+          <input type="text" placeholder="NickName">
+          <input type="text" placeholder="Room">
+          <input type="text" placeholder="Password">
+          <button onclick="onJoinRoom()">Join</button>
+          
+        </div>
+        <div class="room ui hidden">
+            <ul>
+              // här kommer alla chattemeddelande
+            </ul>
+        <div class="input-section">
+          <input type="text" placeholder="type your message">
+          <button onclick="onSendMessage()">Send</button>
+
+        </div>
+        </div>
+       
+      </body>
+</html>
