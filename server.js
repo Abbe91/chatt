@@ -33,7 +33,6 @@ function connectionOn(socket){
           password: data.password
         })
       })
-      console.log("join")
       io.to(socket.id).emit("join is done", "success")
 
       io.to(data.room).emit("in the room", `${data.name} has joined the room`)

@@ -39,7 +39,6 @@ function connectionOn(socket) {
           password: data.password
         });
       });
-      console.log("join");
       io.to(socket.id).emit("join is done", "success");
       io.to(data.room).emit("in the room", "".concat(data.name, " has joined the room"));
     } //skicka ut meddelande till alla klienter i det aktuella rummet

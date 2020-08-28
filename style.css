@@ -23,12 +23,13 @@ input{
   justify-content: center;
 }
 button{
-  background: #008a7c;
-  color: #fff;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ font-size:0.8rem;
+ border-radius: 10rem;
+ border: none;
+ padding: 0.8rem 2rem;
+ background: green;
+ cursor: pointer;
+ height: auto;
 }
 
 .hidden{
