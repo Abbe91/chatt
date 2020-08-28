@@ -37,11 +37,19 @@ function loadingChat() {
 }
 
 function ifRoomJoined(message) {
-  var list = document.querySelector(".room.ui ul");
-  var listItem = document.createElement("li");
-  listItem.innertext = message;
-  list.appendChild(listItem);
+  // const list = document.querySelector(".room.ui ul")
+  // const listItem = document.createElement("li")
+  // listItem.innertext = message
+  // list.appendChild(message)
+  // isInRoom = true
+  // console.log(message)
+  //try to solve the problem
+  var welcome = document.getElementById("nameWelcome");
+  var welcomeList = document.createElement("li");
+  welcomeList.innertext = message;
+  welcome.appendChild(welcomeList);
   isInRoom = true;
+  console.log(message);
 }
 
 function sendNewMessage(data) {

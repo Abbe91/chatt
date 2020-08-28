@@ -26,11 +26,20 @@ function loadingChat(){
 
 }
 function ifRoomJoined(message){
-    const list = document.querySelector(".room.ui ul")
-    const listItem = document.createElement("li")
-    listItem.innertext = message
-    list.appendChild(listItem)
+    // const list = document.querySelector(".room.ui ul")
+    // const listItem = document.createElement("li")
+    // listItem.innertext = message
+    // list.appendChild(message)
+    // isInRoom = true
+    // console.log(message)
+
+    //try to solve the problem
+    const welcome = document.getElementById("nameWelcome")
+    const welcomeList = document.createElement("li")
+    welcomeList.innertext = message
+    welcome.appendChild(welcomeList)
     isInRoom = true
+    console.log(message)
 
 }
 function sendNewMessage(data){
