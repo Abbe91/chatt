@@ -19,7 +19,6 @@ function connectionOn(socket){
       if(data.password == roomToJoin.password){
         socket.join(data.room, () =>{
           io.to(socket.id).emit("join is done", "success")
-
           io.to(data.room).emit("in the room", `${data.name} has joined the room`)
 
         })

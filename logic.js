@@ -19,29 +19,26 @@ function setupLista(){
 
 }
 function loadingChat(){
-    console.log("loadingChat")
     const joinUI = document.querySelector(".join.ui")
     const roomUI = document.querySelector(".room.ui")
     joinUI.classList.add("hidden")
     roomUI.classList.remove("hidden")
-    console.log("hej the chat should appear")
-    console.log( joinUI.classList)
 
 }
 function ifRoomJoined(message){
     const list = document.querySelector(".room.ui ul")
     const listItem = document.createElement("li")
     listItem.innertext = message
-
     list.appendChild(listItem)
     isInRoom = true
+
 }
 function sendNewMessage(data){
-    const list = document.querySelector(".room.ui ul")
-    const listItem = document.createElement("li")
-    listItem.innertext =data.name+ ""+ data.message
-
-    list.appendChild(listItem)
+    //test new wat to solv the problem
+    const chatList = document.getElementById("chatList")
+    const newMessage = document.createElement("li")
+    newMessage.innerText = data.name+ ": "+ data.message
+    chatList.appendChild(newMessage)
 }
 function wrongpassword(msg){
     socket.emit("all rooms is deleted")
@@ -53,15 +50,12 @@ function onJoinRoom(){
     room = roomInput.value
     let password = passwordInput.value
     socket.emit('join room', { name, room, password})
-    console.log("went to the room")
-    console.log(name,room , password)
+ 
 }
 function onSendMessage(){
-    const messageInput = document.querySelector('.room.ui input')
-    const message = messageInput.value
-    socket.emit('message', { name, room, message})
-    messageInput.value= ""
-    console.log(message)
+    const message = document.getElementById("input").value
+    socket.emit('message',  { name, room, message})
+
 }
 
 
