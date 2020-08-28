@@ -49,9 +49,9 @@ function connectionOn(socket) {
       io.to(data.room).emit("message", data);
     });
   });
-  socket.on("deleted room", function () {
-    roomsWithPassword = [];
-    socket.emit("deleted room", "All the rooms has been deleted....");
+  socket.on("all rooms is deleted", function () {
+    roomWithPassword = [];
+    socket.emit("all rooms is deleted", "All the rooms has been deleted....");
   });
 } // io.on('connection', (socket) => {
 //   console.log('a user connected');

@@ -46,9 +46,9 @@ function connectionOn(socket){
    
   })
   
-  socket.on("deleted room", () =>{
-    roomsWithPassword =[]
-    socket.emit("deleted room", "All the rooms has been deleted....")
+  socket.on("all rooms is deleted", () =>{
+    roomWithPassword =[]
+    socket.emit("all rooms is deleted", "All the rooms has been deleted....")
   })
   
 }
