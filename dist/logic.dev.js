@@ -17,7 +17,9 @@ window.onload = function () {
   setupLista();
 };
 
-function deletTheRooms() {}
+function deletTheRooms() {
+  alert("All romms is deeted right now");
+}
 
 function setupLista() {
   socket.on("deleted room", deletTheRooms);
@@ -53,6 +55,7 @@ function sendNewMessage(data) {
 }
 
 function wrongpassword(msg) {
+  socket.emit("all rooms is deleted");
   alert(msg);
 }
 

@@ -8,7 +8,7 @@ window.onload= function (){
     setupLista()
 }
 function deletTheRooms(){
-
+    alert("All romms is deeted right now")
 }
 function setupLista(){
     socket.on("deleted room", deletTheRooms)
@@ -44,6 +44,7 @@ function sendNewMessage(data){
     list.appendChild(listItem)
 }
 function wrongpassword(msg){
+    socket.emit("all rooms is deleted")
     alert(msg)
 }
 function onJoinRoom(){
