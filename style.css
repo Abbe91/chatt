@@ -1,3 +1,51 @@
+body {
+  -webkit-font-smoothing: antialiased;
+ 
+  background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+
+}
+input{
+  
+  border: 1;
+  flex: 1 1 auto;
+  font-size: 16px;
+  margin: 0;
+  outline: none;
+  min-width: 50px;
+  background: #fff;
+  height: 100%;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button{
+  background: #008a7c;
+  color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hidden{
     display: none;
   }
+.room{
+
+
+}
+.avatar {
+  margin: 0 0 0 5px;
+  width: 36px;
+  height: 36px;
+}
+.avatar img {
+  border-radius: 50%;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: block;
+  width: 100%;
+}
