@@ -30,13 +30,10 @@ function setupLista() {
 }
 
 function loadingChat() {
-  console.log("loadingChat");
   var joinUI = document.querySelector(".join.ui");
   var roomUI = document.querySelector(".room.ui");
   joinUI.classList.add("hidden");
   roomUI.classList.remove("hidden");
-  console.log("hej the chat should appear");
-  console.log(joinUI.classList);
 }
 
 function ifRoomJoined(message) {
@@ -48,10 +45,11 @@ function ifRoomJoined(message) {
 }
 
 function sendNewMessage(data) {
-  var list = document.querySelector(".room.ui ul");
-  var listItem = document.createElement("li");
-  listItem.innertext = data.name + "" + data.message;
-  list.appendChild(listItem);
+  //test new wat to solv the problem
+  var chatList = document.getElementById("chatList");
+  var newMessage = document.createElement("li");
+  newMessage.innerText = data.name + ": " + data.message;
+  chatList.appendChild(newMessage);
 }
 
 function wrongpassword(msg) {
@@ -74,20 +72,15 @@ function onJoinRoom() {
     room: room,
     password: password
   });
-  console.log("went to the room");
-  console.log(name, room, password);
 }
 
 function onSendMessage() {
-  var messageInput = document.querySelector('.room.ui input');
-  var message = messageInput.value;
+  var message = document.getElementById("input").value;
   socket.emit('message', {
     name: name,
     room: room,
     message: message
   });
-  messageInput.value = "";
-  console.log(message);
 } // const chatList = document.getElementById("chatList")
 // socket.on("chat message", function(msg){
 //     const newMessage = document.createElement("li")
