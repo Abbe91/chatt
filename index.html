@@ -6,39 +6,30 @@
         <script src="/socket.io/socket.io.js"></script>
         <script defer src="./logic.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        
+
       </head>
 
-      <body>
-    
-       
-        
+      <body>        
         <div class="page">
-          
+        <!--Avatar Image-->
         <div class="avatar">
           <img src="https://avatars2.githubusercontent.com/u/398893?s=128" alt="Avatar">
         </div>
        
-        
         <div class="join ui">
-          <button onclick="deletTheRooms()">Delet all the rooms</button>
           <input type="text" placeholder="NickName">
           <input type="text" placeholder="Room">
           <input type="text" placeholder="Password">
           <button onclick="onJoinRoom()">Join</button>
-          
+
+          <!--Delet all the rooms-->
+          <button onclick="deletTheRooms()">Delet all the rooms</button>
+
         </div>
         <div class="room ui hidden">
           <ul id="nameWelcome">
-
           </ul>
-<<<<<<< HEAD
-          <ul>
-            <p>The chatt is going to start here</p>  
-            
-          
-            <li id="chatList"></li>
-          </ul>
-=======
           <div class="chatBox">
             <h1>
               <!-- Who join the room -->
@@ -49,27 +40,19 @@
                 </div>
                
                 <ul>
-    
-                  
                   <!-- // här kommer alla chattemeddelande -->
-                  
-                
-                  <li id="chatList"></li>
+                  <li id="chatList" class="out"></li>
                 </ul>
+                
+                <div id="giphy">
+                  <img src="" id="gifList" name="gif-list">
+                </div>
         </div>
->>>>>>> Abbe-logic-server
-        <div class="input-section">
-          <input oninput="dropDown()" id="m" autocomplete="off"/>
-          <li onclick="setValue()" id="gifBox">gif/</li>
-          <button type="submit" onclick="sendMessage()">Skicka</button>
-
+        <div class="input-section">         
           <!-- //Text message -->
           <input id="input" type="text" placeholder="type your message">
-          <button onclick="onSendMessage()">Send</button>
+          <button id="getGiphy" onclick="onSendMessage()">Send</button>
 
-        </div>
-    
-      
         </div>
       </div>
       </body>

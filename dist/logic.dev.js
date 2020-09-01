@@ -25,7 +25,7 @@ function setupLista() {
   socket.on("deleted room", deletTheRooms);
   socket.on("join is done", loadingChat);
   socket.on("in the room", ifRoomJoined);
-  socket.on("message", sendNewMessage);
+  socket.on("message", gotNewMessage);
   socket.on("wrong password", wrongpassword);
 }
 
@@ -52,7 +52,7 @@ function ifRoomJoined(message) {
   console.log(message);
 }
 
-function sendNewMessage(data) {
+function gotNewMessage(data) {
   //test new wat to solv the problem
   var chatList = document.getElementById("chatList");
   var newMessage = document.createElement("li");
@@ -82,6 +82,27 @@ function onJoinRoom() {
   });
 }
 
+
+// below code is to know when typing is there
+var timeout;
+function timeoutFunction() {
+  typing = false;
+  socket.emit('typing', {
+    text: "" 
+  });
+}
+$('#input').keyup(function() {
+  console.log('happening');
+  typing = true;
+  $("#icon-type").removeClass();
+  socket.emit('typing', {
+    text: name + " is typing ..."
+  });
+  clearTimeout(timeout);
+  timeout = setTimeout(timeoutFunction, 1000);
+});
+
+
 function onSendMessage() {
   var message = document.getElementById("input").value;
   socket.emit('message', {
@@ -89,7 +110,10 @@ function onSendMessage() {
     room: room,
     message: message
   });
-} // const chatList = document.getElementById("chatList")
+} 
+
+
+// const chatList = document.getElementById("chatList")
 // socket.on("chat message", function(msg){
 //     const newMessage = document.createElement("li")
 //     console.log(newMessage)
