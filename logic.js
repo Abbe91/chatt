@@ -24,7 +24,7 @@ function loadingChat(){
     const roomUI = document.querySelector(".room.ui")
     joinUI.classList.add("hidden")
     roomUI.classList.remove("hidden")
-
+   
 }
 function ifRoomJoined(data){
     socket.emit("in the room")
@@ -32,27 +32,10 @@ function ifRoomJoined(data){
     document.querySelector('h1').innerText = data
    
     console.log(data)
-    // const list = document.querySelector(".room.ui ul")
-    // const listItem = document.createElement("li")
-    // listItem.innertext = message
-    // list.appendChild(welcomeList)
-    // isInRoom = true
-    // console.log(message)
-
-    //try to solve the problem
-
-    // const welcome = document.getElementById("nameWelcome")
-    // const welcomeList = document.createElement("li")
-    // welcomeList.innertext = message.room
-    // welcome.append(welcomeList)
-    // isInRoom = true
-    // console.log(message)
-    
 
 }
 
 function sendNewMessage(data){
-    //test new wat to solv the problem
     const chatList = document.getElementById("chatList")
     const newMessage = document.createElement("li")
     newMessage.innerText = data.name+ ": "+ data.message
@@ -73,15 +56,12 @@ function onJoinRoom(){
 function onSendMessage(){
     const message = document.getElementById("input").value
     socket.emit('message',  { name, room, message})
-
+    deleteInput()
 }
 function deleteInput() {
     let clear = document.getElementById('input').value = ""
+    
 }
-
-
-
-
 const chatList = document.getElementById("chatList")
 
 socket.on("chat message", function(msg){
