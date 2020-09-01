@@ -5,13 +5,19 @@
         <link rel="stylesheet" href="./style.css">
         <script src="/socket.io/socket.io.js"></script>
         <script defer src="./logic.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
       </head>
 
       <body>
+    
+       
+        
         <div class="page">
+          
         <div class="avatar">
           <img src="https://avatars2.githubusercontent.com/u/398893?s=128" alt="Avatar">
         </div>
+       
         
         <div class="join ui">
           <button onclick="deletTheRooms()">Delet all the rooms</button>
@@ -25,17 +31,45 @@
           <ul id="nameWelcome">
 
           </ul>
+<<<<<<< HEAD
           <ul>
             <p>The chatt is going to start here</p>  
             
           
             <li id="chatList"></li>
           </ul>
+=======
+          <div class="chatBox">
+            <h1>
+              <!-- Who join the room -->
+            </h1>
+              <ul id="chatList"></ul>
+                <div id="imgBox">
+                    <img src="" alt="">
+                </div>
+               
+                <ul>
+    
+                  
+                  <!-- // här kommer alla chattemeddelande -->
+                  
+                
+                  <li id="chatList"></li>
+                </ul>
+        </div>
+>>>>>>> Abbe-logic-server
         <div class="input-section">
+          <input oninput="dropDown()" id="m" autocomplete="off"/>
+          <li onclick="setValue()" id="gifBox">gif/</li>
+          <button type="submit" onclick="sendMessage()">Skicka</button>
+
+          <!-- //Text message -->
           <input id="input" type="text" placeholder="type your message">
           <button onclick="onSendMessage()">Send</button>
 
         </div>
+    
+      
         </div>
       </div>
       </body>
