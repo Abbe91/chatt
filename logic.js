@@ -7,6 +7,7 @@ let isInRoom = false
 window.onload= function (){
     setupLista()
 }
+
 function deletTheRooms(){
     alert("All romms is deeted right now")
 }
@@ -25,23 +26,31 @@ function loadingChat(){
     roomUI.classList.remove("hidden")
 
 }
-function ifRoomJoined(message){
+function ifRoomJoined(data){
+    socket.emit("in the room")
+   
+    document.querySelector('h1').innerText = data
+   
+    console.log(data)
     // const list = document.querySelector(".room.ui ul")
     // const listItem = document.createElement("li")
     // listItem.innertext = message
-    // list.appendChild(message)
+    // list.appendChild(welcomeList)
     // isInRoom = true
     // console.log(message)
 
     //try to solve the problem
-    const welcome = document.getElementById("nameWelcome")
-    const welcomeList = document.createElement("li")
-    welcomeList.innertext = message
-    welcome.appendChild(welcomeList)
-    isInRoom = true
-    console.log(message)
+
+    // const welcome = document.getElementById("nameWelcome")
+    // const welcomeList = document.createElement("li")
+    // welcomeList.innertext = message.room
+    // welcome.append(welcomeList)
+    // isInRoom = true
+    // console.log(message)
+    
 
 }
+
 function sendNewMessage(data){
     //test new wat to solv the problem
     const chatList = document.getElementById("chatList")
@@ -66,24 +75,24 @@ function onSendMessage(){
     socket.emit('message',  { name, room, message})
 
 }
+function deleteInput() {
+    let clear = document.getElementById('input').value = ""
+}
 
 
 
 
+const chatList = document.getElementById("chatList")
 
+socket.on("chat message", function(msg){
+    const newMessage = document.createElement("li")
+    console.log(newMessage)
+    newMessage.innerText = msg
+    chatList.appendChild(newMessage)
+});
 
-
-// const chatList = document.getElementById("chatList")
-
-// socket.on("chat message", function(msg){
-//     const newMessage = document.createElement("li")
-//     console.log(newMessage)
-//     newMessage.innerText = msg
-//     chatList.appendChild(newMessage)
-// });
-
-// function sendMessage(){
-//     const message = document.getElementById("m").value
-//     socket.emit('chat message', message)
-//     console.log(message)
-// }
+function sendMessage(){
+    const message = document.getElementById("m").value
+    socket.emit('chat message', message)
+    console.log(message)
+}
