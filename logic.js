@@ -36,10 +36,17 @@ function ifRoomJoined(data){
 }
 
 function sendNewMessage(data){
-    const chatList = document.getElementById("chatList")
-    const newMessage = document.createElement("li")
-    newMessage.innerText = data.name+ ": "+ data.message
-    chatList.appendChild(newMessage)
+        const chatList = document.getElementById("chatList")
+        const newMessage = document.createElement("li")
+        newMessage.innerText = data.name+ ": "+ data.message
+        chatList.appendChild(newMessage)
+        console.log(data.message)
+        myMessage = data.message
+        if(myMessage.type == Number){
+            console.log("ffff")
+        }
+    
+   
 }
 function wrongpassword(msg){
     socket.emit("all rooms is deleted")
