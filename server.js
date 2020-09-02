@@ -49,9 +49,15 @@ function connectionOn(socket){
     socket.emit("all rooms is deleted", "All the rooms has been deleted....")
   })
   
+  // to show who is typing Message
+  socket.on('typing', function(message) { 
+      socket.broadcast.to(roomWithPassword[socket.id].room).emit("typing", message);
+  });
 }
 
+
 io.on( "connection",connectionOn) 
+
 
 
 http.listen(port, ()=> console.log('listening on ' + port));
