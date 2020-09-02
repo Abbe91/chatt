@@ -34,6 +34,7 @@ function onInputchange(event){
     if (text == "/"){
         //presents users with avalble commands 
         avalbilecommands.forEach(command => {
+            
             console.log(command);
             
         });
@@ -53,15 +54,23 @@ function gotNewMessage(data){
     const chatList = document.getElementById("chatList")
     const newMessage = document.createElement("li")
     newMessage.innerText = data.name+ ": "+ data.message
+    let message = data.message
     chatList.appendChild(newMessage)
 
-    if (message.startsWith("/gif")){
+    if (message.value == "/"){
+        console.log("hejjj2222")
+        sendMessage()
         //get the search word from the message and fetch gif 
-        const searchWord = message.value.substring(5)
+        
+    } else if(message.startsWith("/gif")) {
+        const searchWord = message.substring(5)
+        console.log(searchWord)
+        console.log("hejjj")
         fetchGif(searchWord)
+        // socket.emit('message', message)
+        // console.log(message)
     } else {
-        socket.emit('message', message)
-        console.log(message)
+        console.log("didn't sea any thing")
     }
 
 }
@@ -104,6 +113,7 @@ function sendMessage(){
 }
 
 function fetchGif(searchWord){
+    console.log("cat")
     let APIKEY = "Qw9ZKGi62DjSH1HxEHOslCYJYJSvFNa9";
     let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=1&q=${searchWord}`; 
 
@@ -127,11 +137,11 @@ function fetchGif(searchWord){
         let out = document.querySelector(".out");
         out.insertAdjacentElement("afterbegin", fig);
         document.querySelector("#input").value = "";
-
+        console.log(url)
         socket.emit('message', {
             type: "img",
             content: img.url,
-            user: user
+            //user: user
           });
 
       })
