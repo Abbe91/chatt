@@ -3,7 +3,7 @@ const socket = io();
 let room =""
 let name = ""
 let isInRoom = false
-let avalbilecommands = ["gif" , "etc"]
+let availableCommands = ["gif" , "weather" ,"etc"]
 
 window.onload= function (){
     setupLista()
@@ -33,10 +33,12 @@ function onInputchange(event){
     console.log(text)
     if (text == "/"){
         //presents users with avalble commands 
-        avalbilecommands.forEach(command => {
-            
+        availableCommands.forEach(command => {
             console.log(command);
-            
+            let commandsList = document.getElementById("show")
+            let showCommands = document.createElement('li')
+            showCommands.innerText = command
+            commandsList.appendChild(showCommands);
         });
     } 
 }
@@ -67,8 +69,9 @@ function gotNewMessage(data){
         console.log(searchWord)
         console.log("hejjj")
         fetchGif(searchWord)
-        // socket.emit('message', message)
-        // console.log(message)
+        //socket.emit('message', message)
+        //console.log(message)
+        
     } else {
         console.log("didn't sea any thing")
     }
