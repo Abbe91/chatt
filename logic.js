@@ -12,6 +12,7 @@ window.onload= function (){
 function deletTheRooms(){
     alert("All romms is deeted right now")
 }
+
 function setupLista(){
     socket.on("deleted room", deletTheRooms)
     socket.on("join is done", loadingChat)
@@ -19,6 +20,7 @@ function setupLista(){
     socket.on("message", gotNewMessage)
     socket.on("wrong password", wrongpassword)
 }
+
 function loadingChat(){
     const joinUI = document.querySelector(".join.ui")
     const roomUI = document.querySelector(".room.ui")
@@ -28,6 +30,8 @@ function loadingChat(){
     const input = document.getElementById("input")
     input.addEventListener("input", onInputchange)
 }
+
+
 function onInputchange(event){
     const text = event.target.value
     console.log(text)
@@ -90,17 +94,28 @@ function onJoinRoom(){
     let password = passwordInput.value
     socket.emit('join room', { name, room, password})
 }
+
 function onSendMessage(){
     const message = document.getElementById("input").value
     socket.emit('message',  { name, room, message})
     deleteInput()
+    deleteCommands()
+  
 }
+
+   /*  // to show who is typing Message
+    message.addEventListener('keypress', function(){
+        socket.emit('typing', message.value);
+      }) */
 
 function deleteInput() {
     let clear = document.getElementById('input').value = ""
 }
 const chatList = document.getElementById("chatList")
 
+function deleteCommands() {
+    let clear = document.getElementById("show").innerHTML = "";
+}
 
 function sendMessage(){
     const message = document.getElementById("m").value
@@ -152,3 +167,5 @@ function fetchGif(searchWord){
         console.error(err);
       });
 }
+
+
