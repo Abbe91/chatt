@@ -3,11 +3,15 @@ const socket = io();
 let room =""
 let name = ""
 let isInRoom = false
-let availableCommands = ["gif" , "weather" ,"etc"]
+let availableCommands = ["gif", "weather", "etc"]
 
 window.onload= function (){
     setupLista()
 }
+
+
+
+
 
 function deletTheRooms(){
     alert("All romms is deeted right now")
@@ -34,7 +38,7 @@ function loadingChat(){
 
 function onInputchange(event){
     const text = event.target.value
-    console.log(text)
+    // console.log(text)
     if (text == "/"){
         //presents users with avalble commands 
         availableCommands.forEach(command => {
@@ -43,8 +47,17 @@ function onInputchange(event){
             let showCommands = document.createElement('li')
             showCommands.innerText = command
             commandsList.appendChild(showCommands);
+            commandsList.style.display = "block"
+            
         });
-    } 
+    } else if (text == ""){
+        let commandsList = document.getElementById("show")
+        commandsList.innerText = ""
+        commandsList.style.display = "none"
+    } else if (msg.type == "img") {
+        let giphy = msg.content
+        printGiphy(giphy)
+    }
 }
 
 function ifRoomJoined(data){
@@ -65,19 +78,22 @@ function gotNewMessage(data){
 
     if (message.value == "/"){
         console.log("hejjj2222")
-        sendMessage()
+        printGiphy(giphy)
+        onSendMessage()
+        
         //get the search word from the message and fetch gif 
         
     } else if(message.startsWith("/gif")) {
-        const searchWord = message.substring(5)
+        let searchWord = message.substring(5)
         console.log(searchWord)
         console.log("hejjj")
         fetchGif(searchWord)
-        //socket.emit('message', message)
-        //console.log(message)
+        printGiphy(giphy)
         
     } else {
-        console.log("didn't sea any thing")
+        console.log(message)
+        console.log("message send")
+        printGiphy(giphy)
     }
 
 }
@@ -117,21 +133,8 @@ function deleteCommands() {
     let clear = document.getElementById("show").innerHTML = "";
 }
 
-function sendMessage(){
-    const message = document.getElementById("m").value
-
-    if (message.startsWith("/gif")){
-        //get the search word from the message and fetch gif 
-        const searchWord = message.value.substring(5)
-        fetchGif(searchWord)
-    } else {
-        socket.emit('message', message)
-        console.log(message)
-    }
-}
-
 function fetchGif(searchWord){
-    console.log("cat")
+  
     let APIKEY = "Qw9ZKGi62DjSH1HxEHOslCYJYJSvFNa9";
     let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=1&q=${searchWord}`; 
 

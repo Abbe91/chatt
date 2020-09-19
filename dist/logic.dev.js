@@ -112,16 +112,3 @@ function onSendMessage() {
   });
 } 
 
-
-// const chatList = document.getElementById("chatList")
-// socket.on("chat message", function(msg){
-//     const newMessage = document.createElement("li")
-//     console.log(newMessage)
-//     newMessage.innerText = msg
-//     chatList.appendChild(newMessage)
-// });
-// function sendMessage(){
-//     const message = document.getElementById("m").value
-//     socket.emit('chat message', message)
-//     console.log(message)
-// }

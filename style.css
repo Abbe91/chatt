@@ -59,3 +59,17 @@ button{
 li{
   cursor: pointer;
 }
+.chatBox{
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+#chatList{
+  border: 2px solid red;
+  background-color: #634c4c;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px 0;
+}
