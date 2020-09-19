@@ -54,9 +54,10 @@ function onInputchange(event){
         let commandsList = document.getElementById("show")
         commandsList.innerText = ""
         commandsList.style.display = "none"
-    } else if (msg.type == "img") {
-        let giphy = msg.content
-        printGiphy(giphy)
+    } else if (text.type == "img") {
+        let searchWord = text.content
+        fetchGif(searchWord)
+
     }
 }
 
@@ -78,7 +79,7 @@ function gotNewMessage(data){
 
     if (message.value == "/"){
         console.log("hejjj2222")
-        printGiphy(giphy)
+        
         onSendMessage()
         
         //get the search word from the message and fetch gif 
@@ -88,12 +89,12 @@ function gotNewMessage(data){
         console.log(searchWord)
         console.log("hejjj")
         fetchGif(searchWord)
-        printGiphy(giphy)
+       
         
     } else {
         console.log(message)
         console.log("message send")
-        printGiphy(giphy)
+        
     }
 
 }
@@ -155,7 +156,7 @@ function fetchGif(searchWord){
         fc.textContent = content.data[0].title;
         fig.appendChild(img);
         fig.appendChild(fc);
-        let out = document.querySelector(".out");
+        let out = document.getElementById("imgBox");
         out.insertAdjacentElement("afterbegin", fig);
         document.querySelector("#input").value = "";
         console.log(url)
