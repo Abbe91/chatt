@@ -1,44 +1,173 @@
-body {
-  -webkit-font-smoothing: antialiased;
- 
+:root {
+  --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --msger-bg: #fff;
+  --border: 2px solid #ddd;
+  --left-msg-bg: #ececec;
+  --right-msg-bg: #579ffb;
+}
+
+html{
+  box-sizing: border-box;
+  height:  100vh; 
+  width:  100vw;
+  margin:  0 0; 
+  display:  flex; 
+  justify-content: center;
+  background:  #f3f2f2; 
   background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
 
 }
-input{
-  
-  border: 1;
-  flex: 1 1 auto;
-  font-size: 16px;
+*,
+*:before,
+*:after {
   margin: 0;
-  outline: none;
-  min-width: 50px;
-  background: #fff;
-  height: 100%;
+  padding: 0;
+  box-sizing: inherit;
 }
-.page{
-  width: 100%;
-  height: 100%;
+
+.join{
+
+  padding:  40px 30px; 
+  background:  #fefefe; 
+  display:  flex; 
+  flex-direction:  column;
+  align-items:  flex-start; 
+  padding-bottom:  20px; 
+  width:  1200px; 
+}
+/* body {
+
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vh;
+  background-image: var(--body-bg);
+  font-family: Helvetica, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+
+
+} */
+
+.first-page {
+  display:  flex; 
+  flex-direction:  row; 
+  max-width: 1200px;
+  justify-content: center;
+  width: 50%;
+  height:  auto; 
+  margin: auto;
+  padding: 10px;
+  box-shadow: 0px 5px 10px -1px rgb(0 94 144 / 12%);
 }
+
+.left {
+  width:  600px; 
+  height:  auto; 
+  min-height:  100%; 
+  position:  relative; 
+  background-image: var(--body-bg);
+  font-family: Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-image: url("https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size:  cover;
+  border-top-left-radius:  4px; 
+  border-bottom-left-radius:  4px; 
+}
+
+.wrapper-chat{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 867px;
+  margin: 25px 10px;
+  height: calc(100% - 50px);
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-family: "Lato";
+}
+
+
+ .msger-inputarea {
+  display: flex;
+  padding: 10px;
+  border-top: var(--border);
+  background: #eee;
+}
+
+input{  
+  width: 90%;
+  font-size:  16px; 
+  padding:  20px 0px; 
+  height:  56px; 
+  border:  none; 
+  border-bottom:  solid 1px rgba(0,0,0,.1); 
+  background:  #fff; 
+  box-sizing:  border-box; 
+  transition:  all .3s linear; 
+  color:  #000; 
+  font-weight:  400;
+  -webkit-appearance:  none; 
+}
+
+.chatearea{
+  display: flex;
+  width: 1040px;
+  bottom: 0px;
+  position: absolute;
+  border: none;
+  border-radius: 3px;
+  font-size: 1em;
+  padding: 10px;
+  border-top: var(--border);
+  animation-duration: 0.6s;
+}
+
+@keyframes chatearea {
+  to { transform: translateY(0); }
+}
+
+
+.msger-send-btn {
+  margin-left: 10px;
+  background: #579ffb;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.23s;
+}
+.msger-send-btn:hover {
+  background: #579ffb;
+}
+
+h1 {
+  font-size:  40px; 
+  font-weight:  600; 
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color:  #579ffb; 
+  opacity:  .85; 
+}
+
 button{
  font-size:0.8rem;
  border-radius: 10rem;
  border: none;
  padding: 0.8rem 2rem;
- background: green;
+ background: #579ffb;
+ color: #fff;
  cursor: pointer;
  height: auto;
+ margin: 10px;
 }
 
 .hidden{
     display: none;
   }
-.room{
 
-
-}
 .avatar {
   margin: 0 5px 0 5px;
   width: 36px;
@@ -60,16 +189,28 @@ li{
   cursor: pointer;
 }
 .chatBox{
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
+  width: 1040px;
+  height: 600px;
+  overflow-y: scroll;
+  border-radius: 15px;
+  background: var(--left-msg-bg);
+  background: rgb(255 255 255 / 54%);
+}
+.chatBox::-webkit-scrollbar {
+  width: 6px;
+}
+.chatBox::-webkit-scrollbar-track {
+  background: #ddd;
+}
+.chatBox::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
 }
 #chatList{
-  border: 2px solid red;
-  background-color: #634c4c;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px 0;
+  margin: 10px;
+  content: "";
+  clear: both;
+  display: table;
+  padding: 15px;
+  border-radius: 15px;
+  background: var(--left-msg-bg);
 }

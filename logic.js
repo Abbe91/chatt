@@ -47,7 +47,8 @@ function onInputchange(event){
             let showCommands = document.createElement('li')
             showCommands.innerText = command
             commandsList.appendChild(showCommands);
-            commandsList.style.display = "block"
+            commandsList.style.position = "absolute"
+            commandsList.style.bottom = "60px"
             
         });
     } else if (text == ""){
@@ -83,7 +84,7 @@ function gotNewMessage(data){
         onSendMessage()
         
         //get the search word from the message and fetch gif 
-        
+
     } else if(message.startsWith("/gif")) {
         let searchWord = message.substring(5)
         console.log(searchWord)
@@ -148,18 +149,26 @@ function fetchGif(searchWord){
         //  data, pagination, meta
         console.log(content.data);
         console.log("META", content.meta);
+        let chatList = document.getElementById("chatList")
+
         let fig = document.createElement("figure");
         let img = document.createElement("img");
         let fc = document.createElement("figcaption");
+        
+        let newMessage = document.createElement("img")
+
+        chatList.appendChild(newMessage)
         img.src = content.data[0].images.downsized.url;
         img.alt = content.data[0].title;
         fc.textContent = content.data[0].title;
-        fig.appendChild(img);
-        fig.appendChild(fc);
+        // chatList.appendChild(newMessage)
+        chatList.appendChild(img);
+        // fig.appendChild(fc);
         let out = document.getElementById("imgBox");
         out.insertAdjacentElement("afterbegin", fig);
         document.querySelector("#input").value = "";
         console.log(url)
+        commandsList.style.display = ""
         socket.emit('message', {
             type: "img",
             content: img.url,
