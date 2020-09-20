@@ -148,14 +148,21 @@ function fetchGif(searchWord){
         //  data, pagination, meta
         console.log(content.data);
         console.log("META", content.meta);
+        let chatList = document.getElementById("chatList")
+
         let fig = document.createElement("figure");
         let img = document.createElement("img");
         let fc = document.createElement("figcaption");
+        
+        let newMessage = document.createElement("img")
+
+        chatList.appendChild(newMessage)
         img.src = content.data[0].images.downsized.url;
         img.alt = content.data[0].title;
         fc.textContent = content.data[0].title;
-        fig.appendChild(img);
-        fig.appendChild(fc);
+        // chatList.appendChild(newMessage)
+        chatList.appendChild(img);
+        // fig.appendChild(fc);
         let out = document.getElementById("imgBox");
         out.insertAdjacentElement("afterbegin", fig);
         document.querySelector("#input").value = "";
