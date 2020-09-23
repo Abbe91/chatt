@@ -83,7 +83,7 @@ function gotNewMessage(data){
         onSendMessage()
         
         //get the search word from the message and fetch gif 
-        
+
     } else if(message.startsWith("/gif")) {
         let searchWord = message.substring(5)
         console.log(searchWord)
@@ -98,6 +98,8 @@ function gotNewMessage(data){
     }
 
 }
+
+
 
 function wrongpassword(msg){
     socket.emit("all rooms is deleted")
@@ -167,6 +169,7 @@ function fetchGif(searchWord){
         out.insertAdjacentElement("afterbegin", fig);
         document.querySelector("#input").value = "";
         console.log(url)
+        commandsList.style.display = ""
         socket.emit('message', {
             type: "img",
             content: img.url,
@@ -179,4 +182,5 @@ function fetchGif(searchWord){
       });
 }
 
-
+/* var chatEl = document.getElementById("#newMessage");
+chatEl.scrollTop = chatEl.scrollHeight; */
